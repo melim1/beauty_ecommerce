@@ -1,0 +1,205 @@
+/* Styles généraux */
+.insta-container {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: white; /* Fond blanc */
+    color: #333; /* Texte foncé */
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Header */
+.insta-header {
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    gap: 10px;
+}
+
+.insta-icons {
+    display: flex;
+    gap: 15px;
+    background-color: transparent;
+}
+
+.icon {
+    font-size: 24px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+/* Profil */
+.insta-profile {
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.profile-pic {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    margin-right: 20px;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: 350px;
+    width: 100%;
+    background-color: transparent;
+}
+
+.profile-stats div {
+    text-align: center;
+    background-color: transparent;
+}
+
+.profile-name {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    background-color: transparent;
+}
+
+/* Boutons */
+.profile-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    background-color: transparent;
+}
+
+.profile-buttons button {
+    background-color: #e5e5e5;
+    color: #333;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.profile-buttons button:hover {
+    background-color: #d4d4d4;
+}
+
+/* Stories */
+.insta-stories {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    background-color: transparent;
+}
+
+.story {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #ddd;
+    border: 2px solid #ccc;
+}
+
+/* Menu */
+.insta-menu {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    width: 100%;
+    
+}
+
+.insta-menu div {
+    width: 30px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+.insta-menu .active {
+    background-color: #333;
+}
+
+/* Grille de posts */
+.insta-posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    padding: 0px;
+    width: 100%;
+    max-width: 1000px;
+    height: 250px;
+   background-color: transparent;
+   margin: 0 auto; /* Centre la grille */
+    justify-content: center;
+}
+
+.post {
+    width: 100%;
+    aspect-ratio: 1/1;
+    height: 300px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajuste l'image pour remplir sans déformer */
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .insta-profile {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-stats {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .profile-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .insta-stories {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .insta-posts {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.chiffre{
+    background-color: transparent;
+}
+.caract{
+    background-color: transparent;
+}
+h2{
+    background-color: transparent;
+}

@@ -1,11 +1,13 @@
 import "../../styles/styleProduct.css";
 import React, { useEffect, useState,useLayoutEffect } from 'react';
 import { FaShoppingCart, FaChevronUp, FaChevronDown } from 'react-icons/fa';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import api from "../../api"
+import Footer from "../UI/Footer";
 const ProductPage = () => {
   const { slug } = useParams()
+  const navigate = useNavigate();
   const[product, setProduct] = useState({})
   const[similarProducts, setSimilarProducts] = useState([])
   const[loading, setLoading]= useState(false)
@@ -45,9 +47,6 @@ useEffect(() => {
 }, [slug]); // Dès que le slug change, on remonte la page
 
 
-
-
-
   const [quantity, setQuantity] = useState(1);
   const [openDropdown, setOpenDropdown] = useState(null);
 
@@ -64,13 +63,25 @@ useEffect(() => {
   // Liste des couleurs des swatches (exemple)
   const colors = ["#EED3C6", "#D1AFA2", "#B78E80", "#A67566", "#8D5D4D"];
 
+  const handleAddToCart = () => {
+    //  Ajoute le produit au panier (stockage local pour l'instant)
+    const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+    const newCart = [...cartItems, { ...product, quantity }];
+    localStorage.setItem("cart", JSON.stringify(newCart));
+
+    // Redirige vers la page panier
+    navigate("/cart");
+  };
+
   return (
     <div className="container">
       <div className="content">
         {/* Navbar */}
         <div className="navbar">
           <h1 className="logo">Touché Beauty</h1>
-          <FaShoppingCart className="cart-icon" />
+          <Link to="/cart" className="cart-icon">
+                              <FaShoppingCart />
+                          </Link>
         </div>
 
         {/* Product Section */}
@@ -101,7 +112,7 @@ useEffect(() => {
                 </div>
 
                 {/* Add to Cart */}
-                <button className="add-to-cart">ADD TO CART</button>
+                <button className="add-to-cart"  onClick={handleAddToCart}>ADD TO CART</button>
               </div>
 
               {/* Sections Détails du produit */}
@@ -145,54 +156,8 @@ useEffect(() => {
 </div>
         <hr className="dividere"></hr>
 
-        {/* Instagram Section */}
-        <div className="instagram-container">
-      <div className="instagram-content">
-        <div className="text-section">
-        <h3>FOLLOW US ON <br /> <span className="instagram-title">INSTAGRAM</span></h3>
-          <button className="see-more">SEE MORE</button>
-        </div>
-        <div className="images-section">
-          <img src="/images/img1.jpg" alt="Product 1" />
-          <img src="/images/img2.jpg" alt="Product 2" />
-          <img src="/images/img3.jpg" alt="Product 3" />
-        </div>
-      </div>
+        <Footer />
 
-      
-    </div>
-    <footer className="footer">
-      <div className="newsletter">
-        <p>
-          Subscribe to our newsletter and get <strong>10% off</strong>
-        </p>
-        <div className="newsletter-inputs">
-          <input type="text" placeholder="Name" />
-          <input type="email" placeholder="Email address" />
-          <button>→</button>
-        </div>
-      </div>
-
-      <div className="footer-content">
-        <nav>
-          <a href="#">HOME</a>
-          <a href="#">SHOP</a>
-          <a href="#">ABOUT</a>
-          <a href="#">CONTACT</a>
-          <a href="#">STOCKISTS</a>
-          <a href="#">SITE CREDIT</a>
-          <a href="#">FOLLOW ALONG</a>
-        </nav>
-
-        <div className="footer-logo">
-          <h1>Touché <span>Beauty</span></h1>
-        </div>
-      </div>
-
-      <div className="copyright">
-        <p>Copyright Touché 2022 - By Envol Agency</p>
-      </div>
-    </footer>
 
       </div> {/* Fermeture correcte de la div .content */}
     </div>

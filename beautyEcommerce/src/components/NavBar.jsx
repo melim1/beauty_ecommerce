@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { FaShoppingCart, FaBars } from 'react-icons/fa';
 import api from '../api';
 import { Link } from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
-
+import { randomValue } from '../GenerateCartCode';
+import Footer from './UI/Footer';
 
 
 
@@ -30,36 +30,24 @@ function NavBar() {
             })
     }, [])
 
+    
 
-    const navigate = useNavigate();
-
-    return (
-
-        <div className="landing-page">
-            {/* Header */}
-            <header className="header">
-                <div className="menu-icon" onClick={toggleSidebar}>
+  return (
+    
+    <div className="landing-page">
+    {/* Header */}
+    <header className="header">
+    <div className="menu-icon" onClick={toggleSidebar}>
                     ☰
                 </div>
-                <h1 className="logo">Touché Beauty</h1>
-                <div className="cart-icon">
+        <h1 className="logo">Touché Beauty</h1>
+        <div className="cart-icon">
                     <FaShoppingCart />
                 </div>
-                {user ? <a href='/profile'>{user.username}</a>  : <div className="auth-buttons">
-                    <button className="auth-button" onClick={() => navigate("/login")}>
-                        Se connecter
-                    </button>
-                    <button className="auth-button" onClick={() => navigate("/register")}>
-                        S'inscrire
-                    </button>
-                </div>}
-
-
-
-            </header>
-            <hr className="divider"></hr>
-            {/* Sidebar */}
-            <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+    </header>
+    <hr className="divider"></hr>
+     {/* Sidebar */}
+     <aside className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-header">
                     <h2>Menu</h2>
                     <button className="close-btn" onClick={toggleSidebar}>
@@ -118,73 +106,73 @@ function NavBar() {
             </section>
             <hr className="divider"></hr>
 
-            {/* Shop by Category */}
-            <section className="shop-by-category">
-                <h2>Shop by Category</h2>
-                <div className="categories">
-                    <div className="category" id="eyes">
-                        <img src="../public/images/img2.jpg" alt="Cosmetic Products" />
-                        <h3>Yeux</h3>
-                    </div>
-                    <div className="category" id="face">
-                        <img src="../public/images/img1.jpg" alt="Cosmetic Products" />
-                        <h3>Teint</h3>
-                    </div>
-                    <div className="category" id="lips">
-                        <img src="../public/images/img3.jpg" alt="Cosmetic Products" />
-                        <h3>Rouge à Lèvres</h3>
-                    </div>
-                </div>
-            </section>
-            <hr className="divider"></hr>
-
-            {/* Footer */}
-            <footer className="footer">
-                {/* Section principale avec les colonnes */}
-                <div className="footer-content">
-                    {/* Colonne 1: À propos */}
-                    <div className="footer-section">
-                        <h3>À Propos</h3>
-                        <ul>
-                            <li><a href="/about">Notre histoire</a></li>
-                            <li><a href="/mission">Notre mission</a></li>
-                            <li><a href="/values">Nos valeurs</a></li>
-                        </ul>
-                    </div>
-
-                    {/* Colonne 2: Assistance */}
-                    <div className="footer-section">
-                        <h3>Assistance</h3>
-                        <ul>
-                            <li><a href="/contact">Nous contacter</a></li>
-                            <li><a href="/faq">FAQ</a></li>
-                            <li><a href="/returns">Retours et remboursements</a></li>
-                        </ul>
-                    </div>
-
-                    {/* Colonne 3: Réseaux sociaux */}
-                    <div className="footer-section">
-                        <h3>Suivez-nous</h3>
-                        <div className="social-links">
-                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-                            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Section basse avec mentions légales */}
-                <div className="footer-bottom">
-                    <p>&copy; {new Date().getFullYear()} Touche. Tous droits réservés.</p>
-                    <p>
-                        <a href="/privacy-policy">Politique de confidentialité</a> |
-                        <a href="/terms-of-service">Conditions d'utilisation</a>
-                    </p>
-                </div>
-            </footer>
+    {/* Shop by Category */}
+    <section className="shop-by-category">
+        <h2>Shop by Category</h2>
+        <div className="categories">
+            <div className="category" id="eyes">
+            <img src="../public/images/img2.jpg" alt="Cosmetic Products" />
+                <h3>Yeux</h3>
+            </div>
+            <div className="category" id="face">
+            <img src="../public/images/img1.jpg" alt="Cosmetic Products" />
+                <h3>Teint</h3>
+            </div>
+            <div className="category" id="lips">
+            <img src="../public/images/img3.jpg" alt="Cosmetic Products" />
+                <h3>Rouge à Lèvres</h3>
+            </div>
         </div>
-    )
+    </section>
+    <hr className="divider"></hr>
+
+    {/* Footer */}
+    <footer className="footer">
+            {/* Section principale avec les colonnes */}
+            <div className="footer-content">
+                {/* Colonne 1: À propos */}
+                <div className="footer-section">
+                    <h3>À Propos</h3>
+                    <ul>
+                        <li><a href="/about">Notre histoire</a></li>
+                        <li><a href="/mission">Notre mission</a></li>
+                        <li><a href="/values">Nos valeurs</a></li>
+                    </ul>
+                </div>
+
+                {/* Colonne 2: Assistance */}
+                <div className="footer-section">
+                    <h3>Assistance</h3>
+                    <ul>
+                        <li><a href="/contact">Nous contacter</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/returns">Retours et remboursements</a></li>
+                    </ul>
+                </div>
+
+                {/* Colonne 3: Réseaux sociaux */}
+                <div className="footer-section">
+                    <h3>Suivez-nous</h3>
+                    <div className="social-links">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+                        <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</a>
+                    </div>
+                </div>
+            </div>
+
+            {/* Section basse avec mentions légales */}
+            <div className="footer-bottom">
+                <p>&copy; {new Date().getFullYear()} Touche. Tous droits réservés.</p>
+                <p>
+                    <a href="/privacy-policy">Politique de confidentialité</a> | 
+                    <a href="/terms-of-service">Conditions d'utilisation</a>
+                </p>
+            </div>
+        </footer>
+</div>
+  )
 }
 
 const styles = {

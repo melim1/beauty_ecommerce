@@ -27,8 +27,23 @@ html, body {
     font-size: 24px;
     cursor: pointer;
     margin-right: 10px;
+    color: black !important; 
+}
+.cart-icon a {
+    color: black !important; /* Garde la couleur d'origine */
+    text-decoration: none; /* Supprime le soulignement */
 }
 
+.cart-icon a:hover {
+    color: inherit; /* Assure que la couleur ne change pas au survol */
+}
+.cart-icon a,
+.cart-icon a:visited,
+.cart-icon a:hover,
+.cart-icon a:active {
+    color: black !important; /* Force la couleur d'origine */
+    text-decoration: none !important; /* Supprime le soulignement */
+}
 /* Styles du Sidebar */
 .sidebar {
     position: fixed;
@@ -302,74 +317,170 @@ html, body {
 .category:hover h3 {
     opacity: 1;
 }
+/* Section Instagram */
+.instagram-container {
+    
+    background-color: #f6ede7; /* Beige clair */
+    padding: 50px 0;
+    text-align: center;
+    width: 100vw;
+    margin-left: -73px;
+    margin-right: -10px;
+    padding-left: 20px ;
+    padding-right: 40px ;
+}
+
+/* Partie Texte et Images */
+.instagram-content {
+     position: relative;
+    overflow: hidden;
+    width: 250px;
+    height: 250px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.text-section {
+    text-align: left;
+}
+
+.text-section h3 {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.text-section h1 {
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.see-more {
+    background-color: #3b241c; /* Marron foncé */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.images-section {
+    display: flex;
+    gap: 15px;
+}
+
+.images-section img {
+    width: 200px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.instagram-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #3b241c; /* Marron foncé */
+}
+
+/* Newsletter */
 .footer {
-    background-color: #473022;
-    color: #fff;
-    padding: 5px 20px ;
-    font-family: Arial, sans-serif;
+    background-color: #f1e6dc;
+    padding: 40px 20px;
+    font-family: 'Playfair Display', serif; /* Remplace par la police correcte */
+    color: #3b241c;
+    width: 100vw;
+    padding-left: 20px ;
+    padding-right: 40px ;
+}
+
+.newsletter {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.newsletter p {
+    font-size: 16px;
+}
+
+.newsletter-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.newsletter-inputs input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #3b241c;
+    border-radius: 3px;
+    width: 180px;
+}
+
+.newsletter-inputs button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #3b241c;
 }
 
 .footer-content {
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
+    align-items: center;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #c4a98a;
 }
 
-.footer-section {
-    flex: 1;
-    min-width: 200px;
-}
-
-.footer-section h3 {
-    font-size: 1.2em;
-    margin-bottom: 15px;
-    color: black; 
-}
-
-.footer-section ul li a {
-    color: black;
-    font-size: 1em;
-    transition: color 0.3s ease;
-}
-
-.footer-section ul li a:hover {
-    color: black;
-}
-
-.social-links {
+.footer-content nav {
     display: flex;
     gap: 15px;
 }
 
-.social-links a {
-    color: black;
-    font-size: 1.5em;
-    transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: black;
-}
-
-.footer-bottom {
-    margin-top: 10px;
-    text-align: center;
-    font-size: 0.9em;
-    border-top: 1px solid black;
-    padding-top: 15px;
-}
-
-.footer-bottom a {
-    color: black;
+.footer-content nav a {
     text-decoration: none;
-    margin: 0 5px;
-    transition: color 0.3s ease;
+    color: #3b241c;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-.footer-bottom a:hover {
-    color: black;
+.footer-content nav a:hover {
+    text-decoration: underline;
 }
+
+.footer-logo h1 {
+    font-size: 36px;
+    font-weight: normal;
+}
+
+.footer-logo span {
+    display: block;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.copyright {
+    background-color: #3b241c;
+    color: #3b241c;
+    text-align: center;
+    padding: 10px;
+    font-size: 12px;
+}
+.instagram-container,
+.footer {
+    width: 100%; /* Prend toute la largeur disponible */
+    max-width: 1200px; /* Limite la largeur pour éviter qu'il soit trop étendu */
+    margin: 0 auto; /* Centre horizontalement */
+    padding-left: 0;
+    padding-right: 0;
+}
+
 
 .divider {
     border: none;
