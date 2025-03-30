@@ -28,6 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+AUTH_USER_MODEL = 'users.CustomUser'
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,13 +40,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
     'shop_app',
     'rest_framework',
+    "rest_framework.authtoken",
+    'rest_framework_simplejwt',
     'corsheaders',
+    'users',
+    
 ]
-
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+}
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -54,6 +65,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+
 CORS_ALLOWED_ORIGINS = [
 "http://localhost:8000",
 "http://127.0.0.1:8000",   
@@ -62,6 +75,7 @@ CORS_ALLOWED_ORIGINS = [
 "http://localhost:5175"
 ]
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True 
 
 ROOT_URLCONF = 'beautyEcommerce.urls'
 
@@ -138,5 +152,4 @@ MEDIA_ROOT = BASE_DIR/"media"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_USER_MODEL = "core.User"
 
