@@ -7,6 +7,7 @@ from rest_framework import status
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 
+
 User = get_user_model()
 
 class RegisterView(generics.CreateAPIView):
@@ -30,8 +31,12 @@ class LoginView(APIView):
                         "id": user.id,
                         "username": user.username,
                         "email": user.email,
+                        "first_name" : user.first_name,
+                        "last_name" : user.last_name,
+
                     },
                 },
                 status=status.HTTP_200_OK,
             )
         return Response({"error": "Email ou mot de passe incorrect"}, status=status.HTTP_401_UNAUTHORIZED)
+
