@@ -16,6 +16,7 @@
     align-items: center; /* Centre les éléments */
     min-height: 100vh; /* Prend toute la hauteur */
   }
+
   
   .profile-header {
     text-align: center;
@@ -183,3 +184,64 @@
     margin-top: 15px;
 }
 
+/* Formulaire de changement de mot de passe */
+.password-change-form {
+  margin-top: 15px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.password-change-form .form-group {
+  margin-bottom: 15px;
+}
+
+.password-change-form label {
+  font-size: 14px;
+  color: #333;
+}
+
+.password-change-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+.password-change-form input:focus {
+  border-color: #3498db;
+}
+
+.password-change-form button {
+  background-color: #3D2920;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.password-change-form button:hover {
+  background-color: #3D2920;
+}
+
+/* Style pour le lien "Change password" */
+.change-password {
+  display: inline-block;
+  margin-top: 10px;
+  color: #3D2920;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.change-password:hover {
+  text-decoration: underline;
+}

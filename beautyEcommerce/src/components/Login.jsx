@@ -48,6 +48,7 @@ const Login = () => {
         {error && <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>}
 
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+       
           <input
             type="email"
             name="email"

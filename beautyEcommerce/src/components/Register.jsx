@@ -7,6 +7,9 @@ const Register = () => {
     username: "",
     email: "",
     password: "",
+    first_name: "",
+    last_name: "",
+    
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -22,8 +25,10 @@ const Register = () => {
     setSuccess("");
 
     try {
+      console.log(formData);
       const response = await axios.post(
         "http://127.0.0.1:8000/api/users/register/",
+        
         formData,
         { headers: { "Content-Type": "application/json" } }
       );
@@ -51,6 +56,24 @@ const Register = () => {
         {success && <p style={{ color: "green", fontWeight: "bold" }}>{success}</p>}
 
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <input
+            type="text"
+            name="last_name"
+            placeholder="Nom"
+            value={formData.last_name}
+            onChange={handleChange}
+            style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ddd" }}
+            required
+          />
+          <input
+            type="text"
+            name="first_name"
+            placeholder="Prénom"
+            value={formData.first_name}
+            onChange={handleChange}
+            style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ddd" }}
+            required
+          />
           <input
             type="text"
             name="username"

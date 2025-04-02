@@ -7,11 +7,13 @@ import { randomValue } from '../GenerateCartCode';
 import Footer from './UI/Footer';
 
 
+import { useNavigate } from "react-router-dom";
 
 
 function NavBar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const user = JSON.parse(localStorage.getItem("user"));
+    const navigate = useNavigate();
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -33,6 +35,7 @@ function NavBar() {
     
 
   return (
+
     
     <div className="landing-page">
     {/* Header */}
@@ -44,6 +47,14 @@ function NavBar() {
         <div className="cart-icon">
                     <FaShoppingCart />
                 </div>
+                {user ? <a href='/profil'>{user.username}</a>  : <div className="auth-buttons">
+                    <button className="auth-button" onClick={() => navigate("/login")}>
+                        Se connecter
+                    </button>
+                    <button className="auth-button" onClick={() => navigate("/register")}>
+                        S'inscrire
+                    </button>
+                </div>}
     </header>
     <hr className="divider"></hr>
      {/* Sidebar */}
