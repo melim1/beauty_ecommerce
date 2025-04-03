@@ -26,6 +26,8 @@ const Login = () => {
       );
 
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem('access_token', response.data.access); // Pour JWT
+
       localStorage.setItem("user", JSON.stringify(response.data.user));
       navigate("/");
     } catch (error) {
