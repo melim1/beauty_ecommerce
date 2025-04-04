@@ -127,49 +127,6 @@ const Profil = () => {
 
 
 
-  const handlePasswordSubmit = async (e) => {
-    e.preventDefault();
-
-    if (passwordData.newPassword !== passwordData.confirmPassword) {
-      setError("Les mots de passe ne correspondent pas.");
-      return;
-    }
-
-    if (!passwordData.oldPassword) {
-      setError("Veuillez entrer votre mot de passe actuel.");
-      return;
-    }
-
-    try {
-      const token = localStorage.getItem("access_token");
-      await axios.put(
-        "http://127.0.0.1:8000/api/profil/",
-        {
-          old_password: passwordData.oldPassword,
-          new_password: passwordData.newPassword
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          }
-        }
-      );
-
-      setSuccess("Mot de passe mis à jour avec succès !");
-      setPasswordData({ oldPassword: '', newPassword: '', confirmPassword: '' });
-      setPasswordChangeVisible(false);
-      setError("");
-
-    } catch (error) {
-      setError(error.response?.data?.old_password?.[0] ||
-        error.response?.data?.new_password?.[0] ||
-        error.response?.data?.error ||
-        "Une erreur est survenue. Veuillez réessayer.");
-    }
-  };
-
-
 
 
 

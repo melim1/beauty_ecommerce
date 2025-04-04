@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Footer from './UI/Footer';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -26,8 +27,7 @@ const Login = () => {
       );
 
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem('access_token', response.data.access); // Pour JWT
-
+      localStorage.setItem("access_token", response.data.access); // Pour JWT
       localStorage.setItem("user", JSON.stringify(response.data.user));
       navigate("/");
     } catch (error) {
@@ -38,52 +38,70 @@ const Login = () => {
   return (
     <div style={{
       display: "flex", alignItems: "center", justifyContent: "center", height: "100vh",
-      background: "linear-gradient(135deg, #ff758c, #ff7eb3)",
+     
     }}>
       <div style={{
-        width: "25rem", padding: "2rem", borderRadius: "10px", textAlign: "center",
-        backgroundColor: "rgba(255, 255, 255, 0.95)", backdropFilter: "blur(10px)",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+        width: "30rem", textAlign: "center",
       }}>
-        <h2 style={{ color: "#ff758c", fontWeight: "bold" }}>Connexion</h2>
+        <h2 style={{
+          fontSize: "24px", fontWeight: "bold", textTransform: "uppercase", marginBottom: "1rem"
+        }}>
+          Sign In —
+        </h2>
 
         {error && <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>}
 
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-       
           <input
             type="email"
             name="email"
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
-            style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ddd" }}
+            style={{
+              padding: "12px", border: "1px solid #000", fontSize: "16px",
+              width: "100%", textAlign: "left"
+            }}
             required
           />
           <input
             type="password"
             name="password"
-            placeholder="Mot de passe"
+            placeholder="Password"
             value={formData.password}
             onChange={handleChange}
-            style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ddd" }}
+            style={{
+              padding: "12px", border: "1px solid #000", fontSize: "16px",
+              width: "100%", textAlign: "left"
+            }}
             required
           />
+
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: "14px" }}>
+            <a href="#" style={{ color: "#000", textDecoration: "none" }}>Forgot your password?</a>
+            <a href="/register" style={{ color: "#000", textDecoration: "none" }}>Create an account</a>
+          </div>
+
           <button type="submit" style={{
-            padding: "10px", borderRadius: "5px", border: "none", backgroundColor: "#ff758c",
-            color: "white", fontWeight: "bold", cursor: "pointer", transition: "0.3s",
-          }}
-            onMouseOver={(e) => e.target.style.backgroundColor = "#ff5a8a"}
-            onMouseOut={(e) => e.target.style.backgroundColor = "#ff758c"}
-          >
-            Se connecter
-          </button>
+    padding: "12px 40px", 
+    backgroundColor: "#000", 
+    color: "white",
+    border: "none", 
+    fontWeight: "bold", 
+    cursor: "pointer", 
+    fontSize: "14px",
+    borderRadius: "4px",
+    width: "auto",
+    display: "block",
+    margin: "0 auto"
+}}>
+    Sign In
+</button>
         </form>
-        <p style={{ marginTop: "1rem" }}>
-          Vous n'avez pas de compte ? <a href="/register" style={{ color: "#ff758c", fontWeight: "bold" }}>Créer un compte</a>
-        </p>
       </div>
     </div>
+    
+    
   );
 };
 

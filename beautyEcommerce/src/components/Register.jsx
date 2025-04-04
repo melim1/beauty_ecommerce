@@ -9,8 +9,8 @@ const Register = () => {
     password: "",
     first_name: "",
     last_name: "",
-    
   });
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
@@ -26,61 +26,71 @@ const Register = () => {
 
     try {
       console.log(formData);
-      const response = await axios.post(
+      await axios.post(
         "http://127.0.0.1:8000/api/users/register/",
-        
         formData,
         { headers: { "Content-Type": "application/json" } }
       );
 
-      setSuccess("Inscription réussie ! Vous pouvez maintenant vous connecter.");
+      setSuccess("Inscription réussie !");
       setTimeout(() => navigate("/login"), 2000);
     } catch (error) {
-      setError(error.response?.data?.error || "Une erreur est survenue. Veuillez réessayer.");
+      setError(error.response?.data?.error || "Une erreur est survenue.");
     }
   };
 
   return (
     <div style={{
       display: "flex", alignItems: "center", justifyContent: "center", height: "100vh",
-      background: "linear-gradient(135deg, #ff758c, #ff7eb3)",
+      
     }}>
       <div style={{
-        width: "25rem", padding: "2rem", borderRadius: "10px", textAlign: "center",
-        backgroundColor: "rgba(255, 255, 255, 0.95)", backdropFilter: "blur(10px)",
-        boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
+        width: "30rem", textAlign: "center",
       }}>
-        <h2 style={{ color: "#ff758c", fontWeight: "bold" }}>Inscription</h2>
+        <h2 style={{
+          fontSize: "24px", fontWeight: "bold", textTransform: "uppercase", marginBottom: "1rem"
+        }}>
+          Sign Up —
+        </h2>
 
         {error && <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>}
         {success && <p style={{ color: "green", fontWeight: "bold" }}>{success}</p>}
 
         <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <input
+          <input
             type="text"
             name="last_name"
-            placeholder="Nom"
+            placeholder="Name"
             value={formData.last_name}
             onChange={handleChange}
-            style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ddd" }}
+            style={{
+              padding: "12px", border: "1px solid #000", fontSize: "16px",
+              width: "100%", textAlign: "left"
+            }}
             required
           />
           <input
             type="text"
             name="first_name"
-            placeholder="Prénom"
+            placeholder="First Name"
             value={formData.first_name}
             onChange={handleChange}
-            style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ddd" }}
+            style={{
+              padding: "12px", border: "1px solid #000", fontSize: "16px",
+              width: "100%", textAlign: "left"
+            }}
             required
           />
           <input
             type="text"
             name="username"
-            placeholder="Nom d'utilisateur"
+            placeholder="Username"
             value={formData.username}
             onChange={handleChange}
-            style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ddd" }}
+            style={{
+              padding: "12px", border: "1px solid #000", fontSize: "16px",
+              width: "100%", textAlign: "left"
+            }}
             required
           />
           <input
@@ -89,31 +99,45 @@ const Register = () => {
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
-            style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ddd" }}
+            style={{
+              padding: "12px", border: "1px solid #000", fontSize: "16px",
+              width: "100%", textAlign: "left"
+            }}
             required
           />
           <input
             type="password"
             name="password"
-            placeholder="Mot de passe"
+            placeholder="Password"
             value={formData.password}
             onChange={handleChange}
-            style={{ padding: "10px", borderRadius: "5px", border: "1px solid #ddd" }}
+            style={{
+              padding: "12px", border: "1px solid #000", fontSize: "16px",
+              width: "100%", textAlign: "left"
+            }}
             required
           />
+
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: "14px" }}>
+            <a href="#" style={{ color: "#000", textDecoration: "none" }}>Forgot your password?</a>
+            <a href="/login" style={{ color: "#000", textDecoration: "none" }}>Login Here</a>
+          </div>
           <button type="submit" style={{
-            padding: "10px", borderRadius: "5px", border: "none", backgroundColor: "#ff758c",
-            color: "white", fontWeight: "bold", cursor: "pointer", transition: "0.3s",
-          }}
-            onMouseOver={(e) => e.target.style.backgroundColor = "#ff5e78"}
-            onMouseOut={(e) => e.target.style.backgroundColor = "#ff758c"}
-          >
-            S'inscrire
-          </button>
+    padding: "12px 40px", 
+    backgroundColor: "#000", 
+    color: "white",
+    border: "none", 
+    fontWeight: "bold", 
+    cursor: "pointer", 
+    fontSize: "14px",
+    borderRadius: "4px",
+    width: "auto",
+    display: "block",
+    margin: "0 auto"
+}}>
+    Sign Up
+</button>
         </form>
-        <p style={{ marginTop: "1rem" }}>
-          Vous avez déjà un compte ? <a href="/login" style={{ color: "#ff758c", fontWeight: "bold" }}>Se connecter</a>
-        </p>
       </div>
     </div>
   );
