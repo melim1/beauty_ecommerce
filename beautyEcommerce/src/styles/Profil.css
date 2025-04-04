@@ -313,6 +313,7 @@
   border-radius: 8px;
   background-color: #f9f9f9;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  
 }
 
 .product-form input:focus,
@@ -356,11 +357,14 @@
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
   transition: 0.5s;
+  background-color: transparent 
+
 }
 
 .product-form button:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(61, 41, 32, 0.2);
+  background-color: transparent 
 }
 
 .product-form button:hover::before {
